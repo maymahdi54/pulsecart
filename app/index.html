@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PulseCart &mdash; Modern E-Commerce</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Top Navigation -->
+<header class="top-nav" data-testid="top-nav">
+  <div class="nav-brand" data-testid="nav-logo">PulseCart</div>
+  <div class="nav-search" data-testid="nav-search">
+    <input type="text" id="search-input" placeholder="Search products&hellip;" data-testid="search-input">
+  </div>
+  <div class="nav-actions">
+    <span class="nav-user" data-testid="nav-user-status">Guest</span>
+    <button class="nav-login-btn" data-testid="nav-login-btn">Login</button>
+    <button class="nav-cart-btn" data-testid="nav-cart-btn">
+      Cart <span class="cart-badge" data-testid="cart-badge">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- Category Navigation -->
+<nav class="category-nav" data-testid="category-nav">
+  <button class="category-chip active" data-testid="category-all" data-category="all">All</button>
+  <button class="category-chip" data-testid="category-electronics" data-category="electronics">Electronics</button>
+  <button class="category-chip" data-testid="category-audio" data-category="audio">Audio</button>
+  <button class="category-chip" data-testid="category-wearables" data-category="wearables">Wearables</button>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content" data-testid="main-content">
+  <div class="product-grid" data-testid="product-grid">
+    <!-- Products injected by JS -->
+  </div>
+</main>
+
+<!-- Slide-over Shopping Cart -->
+<aside class="cart-slideover" id="cart-slideover" data-testid="cart-slideover">
+  <div class="cart-header">
+    <h2>Shopping Cart</h2>
+    <button class="cart-close-btn" data-testid="cart-close-btn">&times;</button>
+  </div>
+  <div class="cart-items" data-testid="cart-items">
+    <!-- Cart items injected by JS -->
+    <div class="cart-empty" data-testid="cart-empty">Your cart is empty.</div>
+  </div>
+  <div class="cart-footer" data-testid="cart-footer">
+    <div class="cart-summary">
+      <div>Subtotal: <span data-testid="cart-subtotal">$0.00</span></div>
+      <div>Tax: <span data-testid="cart-tax">$0.00</span></div>
+      <div class="cart-total">Total: <span data-testid="cart-total">$0.00</span></div>
+    </div>
+    <button class="btn-checkout" data-testid="btn-checkout">Checkout</button>
+  </div>
+</aside>
+
+<!-- Checkout Modal -->
+<div class="modal-overlay" id="checkout-modal" data-testid="checkout-modal" aria-hidden="true">
+  <div class="checkout-card" data-testid="checkout-card">
+    <div class="checkout-header">
+      <h2>Checkout</h2>
+      <button class="checkout-close-btn" data-testid="checkout-close-btn">&times;</button>
+    </div>
+    <form id="checkout-form" data-testid="checkout-form">
+      <div class="form-group" data-testid="form-group-fullname">
+        <label>Full Name</label>
+        <input type="text" id="checkout-name" placeholder="John Doe" data-testid="checkout-name">
+        <span class="error-msg" data-testid="error-fullname"></span>
+      </div>
+      <div class="form-group" data-testid="form-group-email">
+        <label>Email</label>
+        <input type="email" id="checkout-email" placeholder="you@example.com" data-testid="checkout-email">
+        <span class="error-msg" data-testid="error-email"></span>
+      </div>
+      <div class="form-group" data-testid="form-group-address">
+        <label>Shipping Address</label>
+        <input type="text" id="checkout-address" placeholder="123 Main St" data-testid="checkout-address">
+        <span class="error-msg" data-testid="error-address"></span>
+      </div>
+      <div class="form-group" data-testid="form-group-card">
+        <label>Card Number (16 digits)</label>
+        <input type="text" id="checkout-card" placeholder="1234 5678 9012 3456" data-testid="checkout-card-input">
+        <span class="error-msg" data-testid="error-card"></span>
+      </div>
+      <div class="form-group" data-testid="form-group-general">
+        <span class="error-msg general" data-testid="checkout-error-general"></span>
+      </div>
+      <div class="checkout-actions">
+        <button type="button" class="btn-cancel" data-testid="btn-cancel-checkout">Cancel</button>
+        <button type="submit" class="btn-submit-checkout" data-testid="btn-submit-checkout">Place Order</button>
+      </div>
+      <div class="checkout-success" data-testid="checkout-success" style="display:none;">
+        <h3>Order Placed Successfully!</h3>
+        <p>Thank you for shopping with PulseCart.</p>
+        <button class="btn-continue" data-testid="btn-continue-shopping">Continue Shopping</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal-overlay" id="login-modal" data-testid="login-modal" aria-hidden="true">
+  <div class="login-card" data-testid="login-card">
+    <div class="login-header">
+      <h2>Login</h2>
+      <button class="login-close-btn" data-testid="login-close-btn">&times;</button>
+    </div>
+    <form id="login-form" data-testid="login-form">
+      <div class="form-group" data-testid="form-group-username">
+        <label>Username</label>
+        <input type="text" id="login-username" placeholder="testuser" data-testid="login-username">
+        <span class="error-msg" data-testid="error-username"></span>
+      </div>
+      <div class="form-group" data-testid="form-group-password">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" data-testid="login-password">
+        <span class="error-msg" data-testid="error-password"></span>
+      </div>
+      <div class="form-group" data-testid="form-group-login-general">
+        <span class="error-msg general" data-testid="login-error-general"></span>
+      </div>
+      <div class="login-actions">
+        <button type="button" class="btn-cancel-login" data-testid="btn-cancel-login">Cancel</button>
+        <button type="submit" class="btn-submit-login" data-testid="login-submit">Login</button>
+      </div>
+      <div class="login-success" data-testid="login-success" style="display:none;">
+        <h3>Welcome back, <span data-testid="logged-in-user"></span>!</h3>
+        <button class="btn-continue-login" data-testid="btn-continue-login">Continue</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
